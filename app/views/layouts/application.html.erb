@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>QwikSplit</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Qwik Split</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
 
-<%= yield %>
+	<body>
+		<header>
+			<div id="logo">
+				<h1>Qwik Split</h1>
+			</div>
 
-</body>
+			<nav>
+				<ul>
+					<% if session[:user_id] %>
+						<li>
+							<%= link_to "Dashboard", dashboard_path %>
+						</li>
+						<li>
+							<%= link_to "Users", users_path %>
+						</li>
+						<li>
+							<%= link_to "Trips", trips_path %>
+						</li>
+						<li>
+							<%= link_to "Sign Out", logout_path, method: :delete %>
+						</li>
+					<% else %>
+						<li>
+							<%= link_to "Sign Up" %>
+						</li>
+						<li>
+							<%= link_to "Login" %>
+						</li>
+					<% end %>
+				</ul>
+			</nav>
+
+			<div class="clear"></div>
+		</header>
+
+		<div id="container">
+			<%= yield %>
+		</div>
+
+		<footer>
+		</footer>
+	</body>
 </html>

@@ -1,0 +1,63 @@
+// Layout Application
+
+header{
+	background-color: #7db4b5;
+	text-align: center;
+
+	#logo{
+	color: #ffffff;
+	float: left;
+	}
+
+	nav{
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		float: right;
+
+		ul{
+			display: inline-block;
+			padding: 0;
+
+			li{
+				background-color: #ffffff;
+				border-radius: 5px;
+				margin: 0 10px;
+				padding: 10px;
+				list-style: none;
+				display: inline-block;
+			}
+
+			li:hover{
+				background-color: Gray;
+
+				a{
+					color: #ffffff;
+				}
+			}
+		}
+	}
+}
+
+//Home Index
+
+#full_background{
+	background-image: url('/assets/desk.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	z-index: -10;
+}
+
+#about{
+	border: solid 1px black;
+	background-color: #ffffff;
+	height: 500px;
+	position: relative;
+	top: calc(100vh - 80px);
+}
