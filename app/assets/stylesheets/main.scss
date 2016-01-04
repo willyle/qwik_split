@@ -99,6 +99,42 @@ header{
 	top: 100px;
 }
 
+//Users Index
+
+.user{
+	text-align: center;
+
+	h1{
+		margin-top: 42px;
+	}
+}
+
+//Users Show
+
+#user_show{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#edit_button{
+	margin: 20px 20px 0 0;
+	float: right;
+}
+
+#user_labels{
+	width: 49%;
+	text-align: right;
+	vertical-align: top;
+	display: inline-block;
+}
+
+#user_information{
+	width: 49%;
+	text-align: left;
+	vertical-align: top;
+	display: inline-block;
+}
+
 //Profiles Edit
 
 .profile{

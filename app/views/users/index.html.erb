@@ -1,2 +1,8 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div id="container" class="user">
+	<% @users.each do |user| %>
+		<% if user.id != session[:user_id] %>
+			<h2><%= link_to user.username, user_path(user) %></h2>
+		<% end %>
+	<% end %>
+</div>
+

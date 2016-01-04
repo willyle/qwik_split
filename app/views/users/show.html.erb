@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div id="container" class="user">
+	<div id="edit_button">
+		<%if @user.id == session[:user_id] %>
+			<%= button_to "Edit Profile", user_edit_path(@user), method: "get" %>
+		<% end %>
+	</div>
+
+	<div class="both"></div>
+	
+	<h1>Profile Page</h1>
+
+	<div id="user_show">
+		<div id="user_labels">
+			<h3>Name: </h3>
+			<h3>Email: </h3>
+			<h3>Gender: </h3>
+			<h3>Birthday: </h3>
+			<h3>Work: </h3>
+		</div>
+
+		<div id="user_information">
+			<h3><%= full_name(@user) %></h3>
+			<h3><%= @user.profile.email %></h3>
+			<h3><%= @user.profile.gender %></h3>
+			<h3><%= (@user.profile.birthday).strftime('%m-%d-%Y') %></h3>
+			<h3><%= @user.profile.work %></h3>
+		</div>
+	</div>
+</div>
