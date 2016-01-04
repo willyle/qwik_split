@@ -1,0 +1,22 @@
+<div id="full_background">
+</div>
+
+<div id="signup_box">
+	<h1>Sign up</h1>
+
+	<%= form_tag "/signup", method: "post" do %>
+		<%= text_field_tag :fname, nil,  placeholder: "First Name" %>
+		<br><br>
+		<%= text_field_tag :lname, nil,  placeholder: "Last Name" %>
+		<br><br>
+		<%= text_field_tag :username, nil,  placeholder: "Username" %>
+		<br><br>
+		<%= email_field_tag :email, nil, placeholder: "Email" %>
+		<br><br>
+		<%= password_field_tag :password, nil, placeholder: "Password" %>
+		<br><br>
+		<%= password_field_tag :password_confirmation, nil, placeholder: "Confirm Password" %>
+		<br><br>
+		<%= submit_tag "Create Account" %>
+	<% end %>
+</div>
