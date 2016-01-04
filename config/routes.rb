@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  get '/dashboard' => 'home#dashboard'
+
+  resources :users, except: :edit do
+    get 'edit' => 'profiles#edit'
+  end
+
+  resources :trips do
+    resources :expenses
+  end
+
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
