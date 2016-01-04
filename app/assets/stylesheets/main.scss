@@ -98,3 +98,26 @@ header{
 	left: calc(50% - 150px);
 	top: 100px;
 }
+
+//Profiles Edit
+
+.profile{
+	text-align: center;
+}
+
+#profile_edit{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#profile_labels{
+	width: 49%;
+	text-align: right;
+	display: inline-block;
+}
+
+#profile_inputs{
+	width: 49%;
+	text-align: left;
+	display: inline-block;
+}

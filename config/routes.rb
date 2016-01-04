@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get 'edit' => 'profiles#edit'
   end
 
+  post 'profile' => 'profiles#update'
+
   resources :trips do
     resources :expenses
   end

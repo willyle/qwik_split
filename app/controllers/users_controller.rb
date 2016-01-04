@@ -17,20 +17,25 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+    if (params[:password]).length > 5
+      user = User.new(user_params)
 
-    if user.save
-      profile = Profile.new(profile_params)
-      profile.user_id = user.id
+      if user.save
+        profile = Profile.new(profile_params)
+        profile.user_id = user.id
 
-      if profile.save
-        session[:user_id] = user.id
-        flash[:notice] = "You have successfully created a user account."
+        if profile.save
+          session[:user_id] = user.id
+          flash[:notice] = "You have successfully created a user account."
+        else
+          user.destroy
+          flash[:alert] = "Please fill the form completely."
+        end
       else
-        flash[:alert] = "Please fill the form completely."
+        flash[:alert] = "There was an error while creating a user account."
       end
     else
-      flash[:alert] = "There was an error while creating a user account."
+      flash[:alert] = "The password must be a minimum of 6 characters."
     end
 
     redirect_to root_path

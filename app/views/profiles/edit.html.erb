@@ -1,0 +1,30 @@
+<div id="container" class="profile">
+	<h1>Edit Your Profile</h1>
+
+	<%= form_for @profile, method: "post" do |f| %>
+		<div id="profile_edit">
+			<div id="profile_labels">
+				<h3><%= f.label :fname, "First Name " %></h3>
+				<h3><%= f.label :lname, "Last Name " %></h3>
+				<h3><%= f.label :email, "Email " %></h3>
+				<h3><%= f.label :gender, "Gender " %></h3>
+				<h3><%= f.label :birthday, "Birthday " %></h3>
+				<h3><%= f.label :work, "Work " %></h3>
+			</div>
+
+			<div id="profile_inputs">
+				<h3><%= f.text_field :fname %></h3>
+				<h3><%= f.text_field :lname %></h3>
+				<h3><%= f.email_field :email %></h3>
+				<h3>
+					<%= f.radio_button :gender, "Male" %>Male
+					<%= f.radio_button :gender, "Female" %>Female
+				</h3>
+				<h3><%= f.date_field :birthday %></h3>
+				<h3><%= f.text_field :work %></h3>
+			</div>
+
+			<%= f.submit "Edit Profile" %>
+		</div>
+	<% end %>
+</div>
