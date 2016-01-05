@@ -46,6 +46,27 @@ header{
 	margin: 0 auto;
 }
 
+#notice{
+	background-color: #00814c;
+	max-width: 920px;
+	font-size: 150%;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+#alert{
+	background-color: #ff6666;
+	max-width: 920px;
+	font-size: 150%;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.absolute{
+	position: absolute;
+	z-index: 0;
+}
+
 //Home Index
 
 #full_background{
@@ -103,10 +124,6 @@ header{
 
 .user{
 	text-align: center;
-
-	h1{
-		margin-top: 42px;
-	}
 }
 
 //Users Show
@@ -156,4 +173,26 @@ header{
 	width: 49%;
 	text-align: left;
 	display: inline-block;
+}
+
+//Trips New
+
+.trip{
+	text-align: center;
+}
+
+#trip_new{
+	margin-bottom: 20px;
+
+	input[type="text"]{
+		width: 300px;
+		height: 30px;
+		text-align: center;
+	}
+
+	textarea{
+		width: 300px;
+		height: 300px;
+		resize: vertical;
+	}
 }

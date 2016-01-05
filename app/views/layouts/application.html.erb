@@ -45,6 +45,32 @@
 			<div class="clear"></div>
 		</header>
 
+		<% if session[:user_id] %>
+			<% if flash[:notice] %>
+				<div id="notice">
+					<%= flash[:notice] %>
+				</div>
+			<% end %>
+
+			<% if flash[:alert] %>
+				<div id="alert">
+					<%= flash[:alert] %>
+				</div>
+			<% end %>
+		<% else %>
+			<% if flash[:notice] %>
+				<div id="notice" class="absolute">
+					<%= flash[:notice] %>
+				</div>
+			<% end %>
+
+			<% if flash[:alert] %>
+				<div id="alert" class="absolute">
+					<%= flash[:alert] %>
+				</div>
+			<% end %>
+		<% end %>
+
 		<%= yield %>
 
 		<footer>

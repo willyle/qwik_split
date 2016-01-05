@@ -1,0 +1,12 @@
+<div id="container" class="trip">
+	<div id="trip_new">
+		<h1>Edit Trip Details</h1>
+
+		<%= form_for @trip do |f| %>
+			<h3><%= f.text_field :title, placeholder: "Title" %></h3>
+			<h3><%= f.text_area :description, placeholder: "Description" %></h3>
+			
+			<%= f.submit "Update Trip Details" %>
+		<% end %>
+	</div>
+</div>

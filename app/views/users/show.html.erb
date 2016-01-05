@@ -5,9 +5,9 @@
 		<% end %>
 	</div>
 
-	<div class="both"></div>
-	
-	<h1>Profile Page</h1>
+	<div class="clear"></div>
+
+	<h1><%= @user.username %></h1>
 
 	<div id="user_show">
 		<div id="user_labels">
@@ -21,9 +21,9 @@
 		<div id="user_information">
 			<h3><%= full_name(@user) %></h3>
 			<h3><%= @user.profile.email %></h3>
-			<h3><%= @user.profile.gender %></h3>
-			<h3><%= (@user.profile.birthday).strftime('%m-%d-%Y') %></h3>
-			<h3><%= @user.profile.work %></h3>
+			<h3><%= @user.profile.gender if @user.profile.gender%></h3>
+			<h3><%= (@user.profile.birthday).strftime('%m-%d-%Y') if @user.profile.birthday%></h3>
+			<h3><%= @user.profile.work if @user.profile.work %></h3>
 		</div>
 	</div>
 </div>

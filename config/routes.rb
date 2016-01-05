@@ -1,15 +1,29 @@
 Rails.application.routes.draw do
+  get 'trips/index'
+
+  get 'trips/show'
+
+  get 'trips/edit'
+
+  get 'trips/update'
+
+  get 'trips/new'
+
+  get 'trips/create'
+
+  get 'trips/destroy'
+
   root 'home#index'
 
   get '/dashboard' => 'home#dashboard'
 
-  resources :users, except: :edit do
+  resources :users, except: [:edit, :destroy] do
     get 'edit' => 'profiles#edit'
   end
 
   post 'profile' => 'profiles#update'
 
-  resources :trips do
+  resources :trips, except: :destroy do
     resources :expenses
   end
 

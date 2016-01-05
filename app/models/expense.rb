@@ -1,5 +1,5 @@
 class Expense < ActiveRecord::Base
-	validates :trip_id, :creator_id, :title, :total, :status
+	validates :trip_id, :creator_id, :title, :total, :status,
 				presence: true
 
 	validates :total,
