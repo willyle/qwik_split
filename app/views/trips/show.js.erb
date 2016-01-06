@@ -1,0 +1,56 @@
+$(document).ready(function(){
+	$('.trip_link').off().on('ajax:complete', function(e){
+		var action = '';
+		action += '<div class="title">';
+			action += '<div id="open_trip_button">';
+				action += '<% if @trip %>';
+					action += '<%= link_to "Open", trip_path(@trip) %>';
+				action += '<% end %>';
+			action += '</div>';
+
+			action += '<%= @trip.title if @trip %>';
+
+			action += '<div class="clear"></div>';
+		action += '</div>';
+
+		action += '<% if @trip %>';
+			action += '<p>';
+				action += '<% description = @trip.description.gsub(/\r\n|\n|\r/,"<br>").html_safe %>';
+				action += 'Description: <%= description %>';
+			action += '</p>';
+
+			action += '<h2>Members</h2>';
+
+			action += '<%= form_tag "/invite", method: :post, remote: true, class: "add_member" do %>';
+				action += '<%= email_field_tag :email, nil, placeholder: "Email" %>';
+				action += '<%= hidden_field_tag :trip_id, value = @trip.id %>';
+
+				action += ' <%= submit_tag "Add Member" %>';
+			action += '<% end %>';
+
+			action += '<ol id="member_list">';
+				action += '<% @trip.accepted_users.each do |user| %>';
+					action += '<li>';
+						action += '<%= link_to "#{user.username} | #{user.profile.email}", user_path(user) %>';
+					action += '</li>';
+				action += '<% end %>';
+			action += '</ol>';
+
+			action += '<h3> Waiting ...</h3>';
+
+			action += '<ol id="invite_list">';
+				action += '<% @trip.invited_users.each do |user| %>';
+					action += '<li>';
+						action += '<%= link_to "#{user.username} | #{user.profile.email}", user_path(user) %>';
+						action += '<% if user.id == session[:user_id] %>';
+							action += ' <%= link_to "Accept", accept_path(trip_id: @trip.id), method: :post, remote: true, class: "accept_trip" %>';
+							action += ' <%= link_to "Decline", decline_path(trip_id: @trip.id), method: :delete, remote: true, class: "decline_trip" %>';
+						action += '<% end %>';
+					action += '</li>';
+				action += '<% end %>';
+			action += '</ol>';
+		action += '<% end %>';
+
+		$(e.currentTarget).closest('#trip_list').siblings('#trip_overview').html(action);
+	});
+});

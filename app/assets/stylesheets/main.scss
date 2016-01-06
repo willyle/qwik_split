@@ -175,6 +175,73 @@ header{
 	display: inline-block;
 }
 
+//Trip Index
+
+.title{
+	background-color: #a5a5a5;
+	font-size: 175%;
+	padding: 5px 0 0 20px;
+	text-align: left;
+
+	#new_trip_button{
+		float: right;
+		width: 37px;
+		height: 37px;
+		margin: 0 10px 5px 0;
+
+		img{
+			width: 100%;
+		}
+	}
+
+	#open_trip_button{
+		float: right;
+		height: 37px;
+		margin: 0 10px 5px 0;
+	}
+}
+
+#trip_list{
+	border-style: outset;
+	background-color: #ffffff;
+	width: 30%;
+	min-width: 170px;
+	margin: 20px 2.5%;
+	float: left;
+
+	.trip_item{
+		border-style: none none solid;
+		border-width: 2px;
+		border-color: LightGray;
+		padding: 20px;
+		text-align: left;
+
+		a{
+			font-size: 125%;
+		}
+	}
+}
+
+.end{
+	width: 100%;
+	padding-top: 17px;
+	height: 33px;
+	text-align: center;
+}
+
+#trip_overview{
+	border-style: outset;
+	background-color: #ffffff;
+	width: 60%;
+	margin: 20px 2.5% 20px 0;
+	text-align: left;
+	float: left;
+
+	p,h2,h3,ol,form{
+		margin: 20px;
+	}
+}
+
 //Trips New
 
 .trip{

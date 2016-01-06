@@ -1,17 +1,9 @@
 Rails.application.routes.draw do
-  get 'trips/index'
+  get 'users_trips/invite'
 
-  get 'trips/show'
+  get 'users_trips/accept'
 
-  get 'trips/edit'
-
-  get 'trips/update'
-
-  get 'trips/new'
-
-  get 'trips/create'
-
-  get 'trips/destroy'
+  get 'users_trips/destroy'
 
   root 'home#index'
 
@@ -33,6 +25,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
+
+  post '/invite' => 'users_trips#invite'
+  post '/accept' => 'users_trips#accept'
+  delete '/decline' => 'users_trips#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

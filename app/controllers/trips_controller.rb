@@ -22,7 +22,7 @@ class TripsController < ApplicationController
     if !member
       @trip = nil
     end
-
+    
     respond_to do |format|
       format.html
       format.js

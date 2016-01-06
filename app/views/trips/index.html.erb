@@ -1,2 +1,82 @@
-<h1>Trips#index</h1>
-<p>Find me in app/views/trips/index.html.erb</p>
+<div id="container" class="trip">
+	<div id="trip_list">
+		<div class="title">
+			<div id="new_trip_button">
+				<%= link_to (image_tag "/assets/add.png"), new_trip_path %>
+			</div>
+
+			Trips
+
+			<div class="clear"></div>
+		</div>
+
+		<% @trips.each do |trip| %>
+			<div class="trip_item">
+				<%=link_to trip.title, trip_path(trip), remote: true, class: "trip_link" %>
+			</div>
+		<% end %>
+
+		<div class="end">
+			<% if @trips.length == 0 %>
+				No trips are found.
+			<% end %> 
+		</div>
+	</div>
+
+	<div id="trip_overview">
+		<div class="title">
+			<div id="open_trip_button">
+				<% if @trips.first %>
+					<%= link_to "Open", trip_path(@trips.first) %>
+				<% end %>
+			</div>
+
+			<%= @trips.first.title if @trips.first %>
+
+			<div class="clear"></div>
+		</div>
+
+		<% if @trips.first %>
+			<p>
+				Description: <%= @trips.first.description %>
+			</p>
+
+			<h2>Members</h2>
+
+			<%= form_tag "/invite", method: :post, remote: true, class: "add_member" do %>
+				<%= email_field_tag :email, nil, placeholder: "Email" %>
+				<%= hidden_field_tag :trip_id, value = @trips.first.id %>
+
+				<%= submit_tag "Add Member" %>
+			<% end %>
+
+			<ol id="member_list">
+				<% @trips.first.accepted_users.each do |user| %>
+					<li>
+						<%= link_to "#{user.username} | #{user.profile.email}", user_path(user) %>
+					</li>
+				<% end %>
+			</ol>
+
+			<h3> Waiting ...</h3>
+
+			<ol id="invite_list">
+				<% @trips.first.invited_users.each do |user| %>
+					<li>
+						<%= link_to "#{user.username} | #{user.profile.email}", user_path(user) %>
+						<% if user.id == session[:user_id] %>
+							<%= link_to "Accept", accept_path(trip_id: @trips.first.id), method: :post, remote: true, class: "accept_trip" %>
+							<%= link_to "Decline", decline_path(trip_id: @trips.first.id), method: :delete, class: "decline_trip" %>
+						<% end %>
+					</li>
+				<% end %>
+			</ol>
+		<% else %>
+			<div class="end">
+				No information to be displayed.
+			</div>
+		<% end %>
+	</div>
+
+	<div class="clear"></div>
+</div>

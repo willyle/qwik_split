@@ -1,0 +1,34 @@
+$(document).ready(function(){
+	$('.add_member').off().on('ajax:complete', function(e){
+		var action = '';
+		action += '<% if @profile %>';
+			action += '<% if @users_trip.id %>';
+				action += '<li>';
+					action += '<%= link_to "#{@profile.user.username} | #{@profile.email}", user_path(@profile.user) %>';
+
+					action += '<% if @profile.user.id == session[:user_id] %>';
+						action += '<%= link_to "Accept", accept_path(trip_id: @trip.id), method: :post, remote: true, class: "accept_trip" %>';
+						action += '<%= link_to "Decline", decline_path(trip_id: @trip.id), method: :delete, remote: true, class: "decline_trip" %>';
+					action += '<% end %>';
+				action += '</li>';
+			action += '<% end %>';
+		action += '<% end %>';
+
+		$(e.currentTarget).siblings('#invite_list').append(action);
+
+		var message = '';
+		message += '<% if flash[:notice] %>';
+			message += '<div id="notice">';
+				message += '<%= flash[:notice] %>';
+			message += '</div>';
+		message += '<% end %>';
+
+		message += '<% if flash[:alert] %>';
+			message += '<div id="alert">';
+				message += '<%= flash[:alert] %>';
+			message += '</div>';
+		message += '<% end %>';
+
+		$(e.currentTarget).closest('#container').before(message);
+	});
+});
