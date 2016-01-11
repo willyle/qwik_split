@@ -1,0 +1,48 @@
+<div id="trip_details">
+	<div class="title">
+		<div id="edit_trip_button">
+			<% if @trip.creator_id == session[:user_id] %>
+				<%= link_to "Edit", edit_trip_path(@trip) %>
+			<% end %>
+		</div>
+
+		<%= @trip.title %>
+
+		<div class="clear"></div>
+	</div>
+
+	<p>
+		Description: <%= @trip.description %>
+	</p>
+
+	<h2>Members</h2>
+
+	<%= form_tag "/invite", method: :post, remote: true, class: "add_member" do %>
+		<%= email_field_tag :email, nil, placeholder: "Email" %>
+		<%= hidden_field_tag :trip_id, value = @trip.id %>
+
+		<%= submit_tag "Add Member" %>
+	<% end %>
+
+	<ol id="member_list">
+		<% @trip.accepted_users.each do |user| %>
+			<li>
+				<%= link_to "#{user.username} | #{user.profile.email}", user_path(user) %>
+			</li>
+		<% end %>
+	</ol>
+
+	<h3> Waiting ...</h3>
+
+	<ol id="invite_list">
+		<% @trip.invited_users.each do |user| %>
+			<li>
+				<%= link_to "#{user.username} | #{user.profile.email}", user_path(user) %>
+				<% if user.id == session[:user_id] %>
+					<%= link_to "Accept", accept_path(trip_id: @trip.id), method: :post, remote: true, class: "accept_trip" %>
+					<%= link_to "Decline", decline_path(trip_id: @trip.id), method: :delete, class: "decline_trip" %>
+				<% end %>
+			</li>
+		<% end %>
+	</ol>
+</div>

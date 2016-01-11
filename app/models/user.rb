@@ -41,7 +41,11 @@ class User < ActiveRecord::Base
 	def self.authenticate(login, password)
 		for i in 0...login.length
 			if login[i] == "@"
-				user = Profile.find_by(email: login).user
+				profile = Profile.find_by(email: login)
+				
+				if profile
+					user = profile.user
+				end
 			end
 		end
 

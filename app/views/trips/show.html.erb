@@ -1,2 +1,17 @@
-<h1>Trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p>
+<div id="container">
+	<ul id="trip_nav">
+		<li id="expenses_button" class="selected item">Expenses</li>
+		<li id="chat_button" class="item">Chat</li>
+		<li id="details_button" class="item">Details</li>
+	</ul>
+
+	<% if @trip %>
+		<%= render "trip_details" %>
+
+		<%= render "trip_chat" %>
+
+		<%= render "trip_expenses" %>
+	<% else %>
+		<h2>You are not an administrator or a member of this trip.</h2>
+	<% end %>
+</div>

@@ -1,0 +1,14 @@
+<div id="trip_chat">
+	<div id="chat_window">
+		<% for i in 1..50 %>
+		<div class="message">
+			<%= "#{i}. Hello World" %>
+		</div>
+		<% end %>
+	</div>
+
+	<div id="chat_input">
+		<input id="new_message" placeholder="Enter a new message ..." />
+		<input id="message_button" type="button" value="Send" />
+	</div>
+</div>
