@@ -18,4 +18,12 @@ class Trip < ActiveRecord::Base
 	has_many :invited_users, -> {
 		where("status = ?", "invited")
 	}, through: :users_trips, source: :user
+
+	has_many :pending, -> {
+		where("status = ?", "pending")
+	}, class_name: "Expense"
+
+	has_many :posted, -> {
+		where("status = ?", "posted")
+	}, class_name: "Expense"
 end

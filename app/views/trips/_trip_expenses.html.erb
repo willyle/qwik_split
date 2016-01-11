@@ -3,95 +3,59 @@
 		Pending Expenses
 	</div>
 
-	<div class="item">
-		<div class="amount">
-			$100
+	<% @trip.pending.each do |expense| %>
+		<div class="item">
+			<div class="amount">
+				<%= number_to_currency(expense.total/1000, unit: "$") %>
+			</div>
+
+			<h3><%= expense.title %></h3>
+			
+			<p>
+				<%= expense.description %>
+			</p>
+
+			<div class="clear"></div>
 		</div>
 
-		<h3>Dinner #1</h3>
-		
-		<p>
-			Dinner at Applebee's
-		</p>
+		<% expense.users_expenses.each do |users_expense| %>
+			<div class="sub_item">
+				<div class="amount">
+					<%= number_to_currency(users_expense.amount/1000, unit: "$") %>
+				</div>
 
-		<div class="clear"></div>
-	</div>
-
-	<div class="sub_item">
-		<div class="amount">
-			$50
-		</div>
-
-		William Le
-	</div>
-
-	<div class="sub_item">
-		<div class="amount">
-			$50
-		</div>
-
-		Richard Ton
-	</div>
-
-	<div class="item">
-		<div class="amount">
-			$100
-		</div>
-
-		<h3>Dinner #2</h3>
-		
-		<p>
-			Dinner at Applebee's
-		</p>
-
-		<div class="clear"></div>
-	</div>
-
-	<div class="sub_item">
-		<div class="amount">
-			$50
-		</div>
-
-		William Le
-	</div>
-
-	<div class="sub_item">
-		<div class="amount">
-			$50
-		</div>
-
-		Richard Ton
-	</div>
-
+				<%= full_name users_expense.user %>
+			</div>
+		<% end %>
+	<% end %>
+	
 	<div class="title">
 		Posted Expenses
 	</div>
 
-	<div class="item">
-		<div class="amount">
-			$100
+	<% @trip.posted.each do |expense| %>
+		<div class="item">
+			<div class="amount">
+				<%= number_to_currency(expense.total/1000, unit: "$") %>
+			</div>
+
+			<h3><%= expense.title %></h3>
+			
+			<p>
+				<%= expense.description %>
+			</p>
+
+			<div class="clear"></div>
 		</div>
 
-		<h3>Dinner #3</h3>
-		
-		<p>
-			Dinner at Applebee's
-		</p>
-
-		<div class="clear"></div>
-	</div>
-
-	<div class="item">
-		<div class="amount">
-			$100
-		</div>
-
-		<h3>Dinner #4</h3>
-		
-		<p>
-			Dinner at Applebee's
-		</p>
-
-		<div class="clear"></div>
-	</div>
+		<% expense.users_expenses.each do |users_expense| %>
+			<div class="sub_item">
+				<div class="amount">
+					<%= number_to_currency(users_expense.amount/1000, unit: "$") %>
+				</div>
+				
+				<%= full_name users_expense.user %>
+			</div>
+		<% end %>
+	<% end %>
 </div>
