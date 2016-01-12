@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	var page_url = window.location.href;
-	var dispatcher = new WebSocketRails('localhost:3000/websocket');
+	var page_parts = page_url.split('/');
+
+	var dispatcher = new WebSocketRails(page_parts[2] +'/websocket');
 
 	dispatcher.on_open = function(data) {
 		console.log('Connection has been established: ', 	data);
