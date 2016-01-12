@@ -2,6 +2,13 @@
 <html>
 	<head>
 	  <title>Qwik Split</title>
+
+	  <link href="/assets/Q.ico" rel="shortcut icon">
+
+	  <meta charset="utf-8" />
+     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
@@ -10,7 +17,7 @@
 	<body>
 		<header>
 			<div id="logo">
-				<h1>Qwik Split</h1>
+				<h1><%= image_tag '/assets/Q.png' %>wik Split</h1>
 			</div>
 
 			<nav>
