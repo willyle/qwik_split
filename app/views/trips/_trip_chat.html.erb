@@ -1,9 +1,9 @@
 <div id="trip_chat">
 	<div id="chat_window">
-		<% for i in 1..50 %>
-		<div class="message">
-			<%= "#{i}. Hello World" %>
-		</div>
+		<% @trip.messages.each do |message| %>
+			<div class="message">
+				<%= "(#{message.created_at.strftime('%m/%d/%Y   %I:%M%p')}) #{full_name message.user}: #{message.body}" %>
+			</div>
 		<% end %>
 	</div>
 

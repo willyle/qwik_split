@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-
+# Websocket Rails gem
+gem 'websocket-rails'
+# this dependency is necessary because of https://github.com/websocket-rails/websocket-rails/issues/379
+gem 'faye-websocket', '0.10.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
