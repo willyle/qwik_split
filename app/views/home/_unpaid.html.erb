@@ -1,4 +1,4 @@
-<div id="unpaid">
+<div id="unpaid" class="hide">
 	<% if @user.unpaid_expenses.length != 0 %>
 		<% @user.unpaid_expenses.each do |users_expense| %>
 			<% if users_expense.expense.status == "posted" %>
@@ -14,7 +14,7 @@
 					<div class="clear"></div>
 				</div>
 
-				<div class="sub_item">
+				<div class="sub_item hide">
 					<p>
 						Title: <%= users_expense.expense.title %>
 					</p>

@@ -1,4 +1,4 @@
-<div id="paid">
+<div id="paid" class="hide">
 	<% if @user.paid_expenses.length != 0 %>
 		<% @user.paid_expenses.each do |users_expense| %>
 			<div class="item">
@@ -7,7 +7,7 @@
 				<%= "You paid #{full_name(users_expense.expense.creator)} #{number_to_currency(users_expense.amount/1000.00, unit: "$")}" %>
 			</div>
 
-			<div class="sub_item">
+			<div class="sub_item hide">
 				<p>
 					Title: <%= users_expense.expense.title %>
 				</p>

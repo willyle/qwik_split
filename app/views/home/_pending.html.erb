@@ -1,4 +1,4 @@
-<div id="pending">
+<div id="pending" class="hide">
 	<% if @user.pending_expenses.length != 0 %>
 		<% @user.pending_expenses.each do |users_expense| %>
 			<div class="item">
@@ -14,7 +14,7 @@
 				<div class="clear"></div>
 			</div>
 
-			<div class="sub_item">
+			<div class="sub_item hide">
 				<p>
 					Title: <%= users_expense.expense.title %>
 				</p>

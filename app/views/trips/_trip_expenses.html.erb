@@ -19,15 +19,17 @@
 				<div class="clear"></div>
 			</div>
 
-			<% expense.users_expenses.each do |users_expense| %>
-				<div class="sub_item">
-					<div class="amount">
-						<%= number_to_currency(users_expense.amount/1000.00, unit: "$") %>
-					</div>
+			<div class="sub_items hide">
+				<% expense.users_expenses.each do |users_expense| %>
+					<div class="sub_item">
+						<div class="amount">
+							<%= number_to_currency(users_expense.amount/1000.00, unit: "$") %>
+						</div>
 
-					<%= full_name users_expense.user %>
-				</div>
-			<% end %>
+						<%= full_name users_expense.user %>
+					</div>
+				<% end %>
+			</div>
 		<% end %>
 	<% else %>
 		<div class="item">
@@ -54,15 +56,17 @@
 				<div class="clear"></div>
 			</div>
 
-			<% expense.users_expenses.each do |users_expense| %>
-				<div class="sub_item">
-					<div class="amount">
-						<%= number_to_currency(users_expense.amount/1000.00, unit: "$") %>
+			<div class="sub_items hide">
+				<% expense.users_expenses.each do |users_expense| %>
+					<div class="sub_item">
+						<div class="amount">
+							<%= number_to_currency(users_expense.amount/1000.00, unit: "$") %>
+						</div>
+						
+						<%= full_name users_expense.user %>
 					</div>
-					
-					<%= full_name users_expense.user %>
-				</div>
-			<% end %>
+				<% end %>
+			</div>
 		<% end %>
 	<% else %>
 		<div class="item">
