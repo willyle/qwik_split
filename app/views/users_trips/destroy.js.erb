@@ -1,13 +1,5 @@
 $(document).ready(function(){
-	$('.accept_trip').off().on('ajax:complete', function(e){
-		var action = '';
-		action += '<% if @users_trip %>';
-			action += '<li>';
-				action += '<%= link_to "#{@users_trip.user.username} | #{@users_trip.user.profile.email}", user_path(@users_trip.user) %>';
-			action += '</li>';
-		action += '<% end %>';
-
-		$(e.currentTarget).closest('#invite_list').siblings("#member_list").append(action);
+	$('.decline_trip').off().on('ajax:complete', function(e){
 		$(e.currentTarget).closest('li').html('').hide();
 
 		$(e.currentTarget).closest('.item').html('').hide();

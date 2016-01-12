@@ -1,0 +1,39 @@
+$(document).ready(function(){
+	$('.pay_expense').off().on('ajax:complete', function(e){
+		var action = '';
+		action += '<div class="item">';
+			action += '<%= image_tag "/assets/add.png", class: "drop_down" %>';
+
+			action += '<%= "You paid #{full_name(@users_expense.expense.creator)} #{number_to_currency(@users_expense.amount/1000, unit: "$")}" %>';
+		action += '</div>';
+
+		action += '<div class="sub_item">';
+			action += '<p>';
+				action += 'Title: <%= @users_expense.expense.title %>';
+			action += '</p>';
+
+			action += '<p>';
+				action += 'Description: <%= @users_expense.expense.description %>';
+			action += '</p>';
+		action += '</div>';
+
+		$(e.currentTarget).closest('#unpaid').siblings('#paid').append(action);
+		$(e.currentTarget).closest('.item').next().html('').hide();
+		$(e.currentTarget).closest('.item').html('').hide();
+
+		var message = '';
+		message += '<% if flash[:notice] %>';
+			message += '<div id="notice">';
+				message += '<%= flash[:notice] %>';
+			message += '</div>';
+		message += '<% end %>';
+
+		message += '<% if flash[:alert] %>';
+			message += '<div id="alert">';
+				message += '<%= flash[:alert] %>';
+			message += '</div>';
+		message += '<% end %>';
+
+		$(e.currentTarget).closest('#container').before(message);
+	});
+});

@@ -1,0 +1,31 @@
+<div id="unpaid">
+	<% if @user.unpaid_expenses.length != 0 %>
+		<% @user.unpaid_expenses.each do |users_expense| %>
+			<% if users_expense.expense.status == "posted" %>
+				<div class="item">
+					<div class="buttons">
+						<%= link_to "Mark as Paid", expense_pay_path(users_expense_id: users_expense.id), method: "post", remote: true, class: "pay_expense" %>
+					</div>
+
+					<%= image_tag "/assets/add.png", class: "drop_down" %>
+
+					<%= "You owe #{full_name(users_expense.expense.creator)} #{number_to_currency(users_expense.amount/1000, unit: "$")}" %>
+
+					<div class="clear"></div>
+				</div>
+
+				<div class="sub_item">
+					<p>
+						Title: <%= users_expense.expense.title %>
+					</p>
+
+					<p>
+						Description: <%= users_expense.expense.description %>
+					</p>
+				</div>
+			<% end %>
+		<% end %>
+	<% else %>
+		There are no unpaid expenses.
+	<% end %>
+</div>

@@ -90,6 +90,78 @@ header{
 	top: calc(100vh - 80px);
 }
 
+//Home Dashboard
+
+.dashboard{
+	h1{
+		margin-left: 20px;
+	}
+}
+
+#dashboard_nav{
+	background-color: #ffffff;
+	font-size: 150%;
+	padding: 0px;
+	margin: 20px 0 0 26px;
+	list-style: none;
+		
+	.item{
+		background-color: Steelblue;
+		display: inline-block;
+		-moz-margin-start: -8px;
+		margin-left: -6px;
+		padding: 10px;
+	}
+
+	.selected{
+		background-color: Blue;
+	}
+
+	.item:hover{
+		background-color: Blue !important;
+	}
+}
+
+#invitation, #pending, #unpaid, #paid{
+	border: solid 1px Gray;
+	background-color:#ffffff;
+	margin: 0 20px 20px 20px;
+	min-height: 350px;
+
+	a{
+		font-size: 120%;
+	}
+
+	.item{
+		background-color: #ffffff;
+		font-size: 100%;
+		padding: 10px 10px 10px 20px;
+		border-style: none none solid none;
+		border-width: 2px;
+		border-color: LightGray;
+
+		.drop_down{
+			width: 25px;
+			height: 25px;
+		}
+
+		.buttons{
+			width: 200px;
+			text-align: right;
+			float: right;
+		}
+	}
+
+	.sub_item{
+		background-color: LightGray;
+		font-size: 100%;
+		padding: 5px 80px 0 50px;
+		border-style: none none solid none;
+		border-width: 1px;
+		border-color: #ffffff;
+	}
+}
+
 //Sessions New
 
 #login_box{

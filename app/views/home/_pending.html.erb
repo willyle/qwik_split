@@ -1,0 +1,30 @@
+<div id="pending">
+	<% if @user.pending_expenses.length != 0 %>
+		<% @user.pending_expenses.each do |users_expense| %>
+			<div class="item">
+				<div class="buttons">
+					<%= link_to "Accept", expense_accept_path(users_expense_id: users_expense.id), method: "post", remote: true, class: "accept_expense" %>
+					<%= link_to "Reject" %>
+				</div>
+
+				<%= image_tag "/assets/add.png", class: "drop_down" %>
+
+				<%= "You owe #{full_name(users_expense.expense.creator)} #{number_to_currency(users_expense.amount/1000, unit: "$")}" %> 
+
+				<div class="clear"></div>
+			</div>
+
+			<div class="sub_item">
+				<p>
+					Title: <%= users_expense.expense.title %>
+				</p>
+
+				<p>
+					Description: <%= users_expense.expense.description %>
+				</p>
+			</div>
+		<% end %>
+	<% else %>
+		There are no pending expenses.
+	<% end %>
+</div>

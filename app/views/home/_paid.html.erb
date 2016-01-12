@@ -1,0 +1,23 @@
+<div id="paid">
+	<% if @user.paid_expenses.length != 0 %>
+		<% @user.paid_expenses.each do |users_expense| %>
+			<div class="item">
+				<%= image_tag "/assets/add.png", class: "drop_down" %>
+
+				<%= "You paid #{full_name(users_expense.expense.creator)} #{number_to_currency(users_expense.amount/1000, unit: "$")}" %>
+			</div>
+
+			<div class="sub_item">
+				<p>
+					Title: <%= users_expense.expense.title %>
+				</p>
+
+				<p>
+					Description: <%= users_expense.expense.description %>
+				</p>
+			</div>
+		<% end %>
+	<% else %>
+		There are no paid expenses.
+	<% end %>
+</div>

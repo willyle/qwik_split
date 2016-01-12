@@ -1,3 +1,18 @@
-<div id="container">
+<div id="container" class="dashboard">
 	<h1>Hi, <%= @user.profile.fname %>!</h1>
+
+	<ul id="dashboard_nav">
+		<li id="invite_button" class="selected item">Invitations</li>
+		<li id="pending_button" class="item">Pending</li>
+		<li id="unpaid_button" class="item">Unpaid</li>
+		<li id="paid_button" class="item">Paid</li>
+	</ul>
+
+	<%= render "invitation" %>
+
+	<%= render "pending" %>
+
+	<%= render "unpaid" %>
+
+	<%= render "paid" %>
 </div>

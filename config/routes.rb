@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'users_trips/invite'
-
-  get 'users_trips/accept'
-
-  get 'users_trips/destroy'
-
   root 'home#index'
 
   get '/dashboard' => 'home#dashboard'
@@ -29,6 +23,10 @@ Rails.application.routes.draw do
   post '/invite' => 'users_trips#invite'
   post '/accept' => 'users_trips#accept'
   delete '/decline' => 'users_trips#destroy'
+
+  post 'expense/accept' => 'users_expenses#accept'
+  post 'expense/pay' => 'users_expenses#pay'
+  post 'expense/confirm' => 'users_expenses#confirm'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

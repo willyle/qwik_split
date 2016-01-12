@@ -1,0 +1,18 @@
+<div id="invitation">
+	<% if @user.invited_trips.length != 0 %>
+		<% @user.invited_trips.each do |trip| %>
+			<div class="item">
+				<div class="buttons">
+					<%= link_to "Accept", accept_path(trip_id: trip.id), method: "post", remote: true, class: "accept_trip" %>
+					<%= link_to "Decline", decline_path(trip_id: trip.id), method: "delete",remote: true, class: "decline_trip" %> 
+				</div>
+
+				<%= link_to trip.title, trip_path(trip) %>
+
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% else %>
+		There are no invitations for you to accept or decline.
+	<% end %>
+</div>

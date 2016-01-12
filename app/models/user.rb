@@ -33,6 +33,18 @@ class User < ActiveRecord::Base
 		where("status = ?", "invited")
 	}, through: :users_trips, source: :trip
 	
+	has_many :pending_expenses, -> {
+		where("status = ?", "pending")
+	}, class_name: "UsersExpense"
+
+	has_many :unpaid_expenses, -> {
+		where("status = ?", "unpaid")
+	}, class_name: "UsersExpense"
+
+	has_many :paid_expenses, -> {
+		where("status = ?", "paid")
+	}, class_name: "UsersExpense"
+	
 	def encrypt_password
 		self.password_salt = BCrypt::Engine.generate_salt
 		self.password_hash = BCrypt::Engine.hash_secret(password,password_salt)
