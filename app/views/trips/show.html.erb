@@ -3,6 +3,12 @@
 		<li id="expenses_button" class="selected item">Expenses</li>
 		<li id="chat_button" class="item">Chat</li>
 		<li id="details_button" class="item">Details</li>
+
+		<div id="add_expense_button">
+			<%= link_to "Add Expense", new_trip_expense_path(trip_id: @trip.id), remote: true, id: "add_expense" %>
+		</div>
+
+		<div class="clear"></div>
 	</ul>
 
 	<% if @trip %>
@@ -11,6 +17,9 @@
 		<%= render "trip_chat" %>
 
 		<%= render "trip_expenses" %>
+
+		<%= render "expense_modal" %>
+
 	<% else %>
 		<h2>You are not an administrator or a member of this trip.</h2>
 	<% end %>

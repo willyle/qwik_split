@@ -1,0 +1,5 @@
+$(document).ready(function(){
+	$('#add_expense').on('ajax:complete', function(e){
+		$(e.currentTarget).closest('#trip_nav').siblings('#expense_modal').removeClass("hide");
+	});
+});

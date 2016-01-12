@@ -360,6 +360,11 @@ header{
 	.item:hover{
 		background-color: Blue !important;
 	}
+
+	#add_expense_button{
+		float: right;
+		margin-right: 20px;
+	}
 }
 
 #trip_expenses{
@@ -436,4 +441,16 @@ header{
 	p,h2,h3,ol,form{
 		margin: 20px;
 	}
+}
+
+#expense_modal{
+	background-color: #7db4b5;
+	border-radius: 10px;
+	width: 300px;
+	height: 300px;
+	padding: 10px;
+	position: fixed;
+	top: 30%;
+	left: calc(50% - 150px);
+	text-align: center;
 }

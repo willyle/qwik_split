@@ -1,0 +1,55 @@
+$(document).ready(function(){
+	$('#new_expense').off().on('ajax:complete', function(e){
+		<% if @save %>
+			var action = '';
+			action += '<div class="item">';
+				action += '<div class="amount">';
+					action += '<%= number_to_currency(@expense.total/1000.00, unit: "$") %>';
+				action += '</div>';
+
+				action += '<h3><%= @expense.title %></h3>';
+				
+				action += '<p>';
+					action += '<%= @expense.description %>';
+				action += '</p>';
+
+				action += '<div class="clear"></div>';
+			action += '</div>';
+
+			action += '<% @expense.users_expenses.each do |users_expense| %>';
+				action += '<div class="sub_item">';
+					action += '<div class="amount">';
+						action += '<%= number_to_currency(users_expense.amount/1000.00, unit: "$") %>';
+					action += '</div>';
+
+					action += '<%= full_name users_expense.user %>';
+				action += '</div>';
+			action += '<% end %>';
+
+			<% if @expense.users_expenses.length == 1 %>
+				$(e.currentTarget).closest('#expense_modal').siblings("#trip_expenses").find('#posted_expenses').after(action);
+				$(e.currentTarget).closest('#expense_modal').addClass('hide');
+				$('input#expense_title, input#expense_total, textarea#expense_description, input[type="number"]').val("");
+			<% else %>
+				$(e.currentTarget).closest('#expense_modal').siblings("#trip_expenses").find('#pending_expenses').after(action);
+				$(e.currentTarget).closest('#expense_modal').addClass('hide');
+				$('input#expense_title, input#expense_total, textarea#expense_description, input[type="number"]').val("");
+			<% end %>
+
+			var message = '';
+			message += '<% if flash[:notice] %>';
+				message += '<div id="notice">';
+					message += '<%= flash[:notice] %>';
+				message += '</div>';
+			message += '<% end %>';
+
+			message += '<% if flash[:alert] %>';
+				message += '<div id="alert">';
+					message += '<%= flash[:alert] %>';
+				message += '</div>';
+			message += '<% end %>';
+
+			$(e.currentTarget).closest('#container').before(message);
+		<% end %>
+	});
+});

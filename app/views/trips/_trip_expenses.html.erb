@@ -1,61 +1,72 @@
 <div id="trip_expenses">
-	<div class="title">
+	<div id="pending_expenses" class="title">
 		Pending Expenses
 	</div>
 
-	<% @trip.pending.each do |expense| %>
-		<div class="item">
-			<div class="amount">
-				<%= number_to_currency(expense.total/1000, unit: "$") %>
-			</div>
-
-			<h3><%= expense.title %></h3>
-			
-			<p>
-				<%= expense.description %>
-			</p>
-
-			<div class="clear"></div>
-		</div>
-
-		<% expense.users_expenses.each do |users_expense| %>
-			<div class="sub_item">
+	<% if @trip.pending.length != 0 %>
+		<% @trip.pending.each do |expense| %>
+			<div class="item">
 				<div class="amount">
-					<%= number_to_currency(users_expense.amount/1000, unit: "$") %>
+					<%= number_to_currency(expense.total/1000.00, unit: "$") %>
 				</div>
 
-				<%= full_name users_expense.user %>
+				<h3><%= expense.title %></h3>
+				
+				<p>
+					<%= expense.description %>
+				</p>
+
+				<div class="clear"></div>
 			</div>
+
+			<% expense.users_expenses.each do |users_expense| %>
+				<div class="sub_item">
+					<div class="amount">
+						<%= number_to_currency(users_expense.amount/1000.00, unit: "$") %>
+					</div>
+
+					<%= full_name users_expense.user %>
+				</div>
+			<% end %>
 		<% end %>
+	<% else %>
+		<div class="item">
+			There are no pending expenses.
+		</div>
 	<% end %>
 	
-	<div class="title">
+	<div id="posted_expenses" class="title">
 		Posted Expenses
 	</div>
-
-	<% @trip.posted.each do |expense| %>
-		<div class="item">
-			<div class="amount">
-				<%= number_to_currency(expense.total/1000, unit: "$") %>
-			</div>
-
-			<h3><%= expense.title %></h3>
-			
-			<p>
-				<%= expense.description %>
-			</p>
-
-			<div class="clear"></div>
-		</div>
-
-		<% expense.users_expenses.each do |users_expense| %>
-			<div class="sub_item">
+	<% if @trip.posted.length != 0 %>
+		<% @trip.posted.each do |expense| %>
+			<div class="item">
 				<div class="amount">
-					<%= number_to_currency(users_expense.amount/1000, unit: "$") %>
+					<%= number_to_currency(expense.total/1000.00, unit: "$") %>
 				</div>
+
+				<h3><%= expense.title %></h3>
 				
-				<%= full_name users_expense.user %>
+				<p>
+					<%= expense.description %>
+				</p>
+
+				<div class="clear"></div>
 			</div>
+
+			<% expense.users_expenses.each do |users_expense| %>
+				<div class="sub_item">
+					<div class="amount">
+						<%= number_to_currency(users_expense.amount/1000.00, unit: "$") %>
+					</div>
+					
+					<%= full_name users_expense.user %>
+				</div>
+			<% end %>
 		<% end %>
+	<% else %>
+		<div class="item">
+			There are no posted expenses.
+		</div>
 	<% end %>
 </div>

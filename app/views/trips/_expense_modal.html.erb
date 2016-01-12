@@ -1,0 +1,25 @@
+<div id="expense_modal" class="hide">
+	<%= form_for [@trip, @expense], remote: true do |f| %>
+		<%= f.text_field :title, placeholder: "Title" %>
+		<%= f.text_area :description, placeholder: "Description" %>
+		<%= f.number_field :total, placeholder: "Total", min: 0, step: 0.01 %>
+		<ul>
+			<% @trip.accepted_users.each do |user| %>
+				<% if user.id == session[:user_id] %>
+					<li>
+						<%= check_box_tag "emails[]", user.profile.email, checked = true, onclick: "javascript: $(this).next().prop('disabled', !$(this).prop('checked'))" %>
+						<%= user.profile.email %>
+						<%= number_field_tag "amount[]", nil, disabled: false, min: 0, step: 0.01 %>
+					</li>
+				<% else %>
+					<li>
+						<%= check_box_tag "emails[]", user.profile.email, checked = false, onclick: "javascript: $(this).next().prop('disabled', !$(this).prop('checked'))" %>
+						<%= user.profile.email %>
+						<%= number_field_tag "amount[]", nil, disabled: true, min: 0, step: 0.01 %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+		<%= f.submit "Add Expense" %>
+	<% end %>
+</div>

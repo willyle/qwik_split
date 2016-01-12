@@ -9,7 +9,7 @@
 
 				<%= image_tag "/assets/add.png", class: "drop_down" %>
 
-				<%= "You owe #{full_name(users_expense.expense.creator)} #{number_to_currency(users_expense.amount/1000, unit: "$")}" %> 
+				<%= "You owe #{full_name(users_expense.expense.creator)} #{number_to_currency(users_expense.amount/1000.00, unit: "$")}" %> 
 
 				<div class="clear"></div>
 			</div>

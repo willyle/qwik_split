@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'expenses/new'
+
+  get 'expenses/create'
+
+  get 'expenses/edit'
+
+  get 'expenses/update'
+
+  get 'expenses/destroy'
+
   root 'home#index'
 
   get '/dashboard' => 'home#dashboard'
