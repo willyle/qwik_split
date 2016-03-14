@@ -83,6 +83,9 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
+    passenger (5.0.26)
+      rack
+      rake (>= 0.8.1)
     pg (0.18.4)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -199,6 +202,7 @@ DEPENDENCIES
   faye-websocket (= 0.10.0)
   jbuilder (~> 2.0)
   jquery-rails
+  passenger
   pg (~> 0.15)
   rails (= 4.2.5)
   rails_12factor
@@ -212,4 +216,4 @@ DEPENDENCIES
   websocket-rails
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Phusion Passenger
+gem 'passenger'
 # Websocket Rails gem
 gem 'websocket-rails'
 # this dependency is necessary because of https://github.com/websocket-rails/websocket-rails/issues/379
